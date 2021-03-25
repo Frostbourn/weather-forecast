@@ -23,6 +23,7 @@ const SearchBox = ({ state }) => {
 
   const handleChange = (event, value) => {
     state(value);
+    console.log(value);
   };
 
   return (

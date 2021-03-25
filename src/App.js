@@ -25,11 +25,16 @@ const App = () => {
   const [zoom, setZoom] = useState(1);
 
   const handleChange = async (data) => {
-    setQuery(data.text);
-    setLat(data.center[1]);
-    setLng(data.center[0]);
     if (data) {
+      setQuery(data.text);
+      setLat(data.center[1]);
+      setLng(data.center[0]);
       setZoom(9);
+    } else {
+      setQuery("Kraków");
+      setLat(52.229676);
+      setLng(21.012229);
+      setZoom(1);
     }
   };
 
