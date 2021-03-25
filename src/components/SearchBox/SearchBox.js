@@ -14,6 +14,7 @@ const SearchBox = ({ state }) => {
       .then((response) => response.json())
       .then((data) => {
         setData(data);
+        console.log(data);
       });
   }, [query]);
 
@@ -35,7 +36,7 @@ const SearchBox = ({ state }) => {
       getOptionSelected={(option, value) => option.text === value.text}
       onInputChange={handleInputChange}
       onChange={handleChange}
-      renderOption={(option) => <>{option.place_name}</>}
+      renderOption={(option) => <>{option.text}</>}
       renderInput={(params) => (
         <TextField {...params} label="Wybierz lokalizację" variant="outlined" />
       )}
