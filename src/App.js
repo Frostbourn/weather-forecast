@@ -4,7 +4,7 @@ import styled from "styled-components";
 import SearchBox from "./components/SearchBox/SearchBox.js";
 import CurrentWeather from "./components/CurrentWeather/CurrentWeather.js";
 
-// import Map from "./components/Map/Map.js";
+import Map from "./components/Map/Map.js";
 // import Photo from "./components/Photo/Photo.js";
 import { Grid, Card, CardContent } from "@material-ui/core";
 
@@ -22,12 +22,15 @@ const App = () => {
   const [query, setQuery] = useState("Warszawa");
   const [lat, setLat] = useState(52.229676);
   const [lng, setLng] = useState(21.012229);
+  const [zoom, setZoom] = useState(1);
 
   const handleChange = async (data) => {
     setQuery(data.text);
     setLat(data.center[1]);
     setLng(data.center[0]);
-    console.log(data);
+    if (data) {
+      setZoom(9);
+    }
   };
 
   // useEffect(() => {
@@ -52,7 +55,7 @@ const App = () => {
             <CardContent>
               <SearchBox state={handleChange} />
               <CurrentWeather lat={lat} lng={lng} query={query} />
-              {/* <Map className="content__map" props={this.state} /> */}
+              <Map className="content__map" lat={lat} lng={lng} zoom={zoom} />
               {/* {lat ? <Photo props={this.state} /> : ""} */}
             </CardContent>
           </Card>
