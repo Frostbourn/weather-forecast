@@ -38,20 +38,23 @@ const App = () => {
     }
   };
 
-  // useEffect(() => {
-  //   fetch(
-  //     `https://api.mapbox.com/geocoding/v5/mapbox.places/${query}.json?access_token=pk.eyJ1IjoiZnJvc3Rib3VybiIsImEiOiJja2x0aTl4OWQwOHluMndvMzA1bXBicDBiIn0.8GtwA1s3m5hqxxgRpaaU4Q`
-  //   )
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       setQuery(data.query[0]);
-  //       setLat(data.features[0].center[0])
-  //       setLng(data.features[0].center[1])
-  //       console.log(data)
-  //     });
-  // }, []);
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        console.log(pos.coords.latitude + " " + pos.coords.longitude); // display VALUE
+        const lat = pos.coords.latitude;
+        const lng = pos.coords.longitude;
+        setLat(lat);
+        setLng(lng);
+        setZoom(9);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }, []);
 
-  //console.log(lat);
+  // console.log(lat);
   return (
     <MainContainer>
       <Grid container justify="center">
