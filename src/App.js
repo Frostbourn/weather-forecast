@@ -22,7 +22,7 @@ const App = () => {
   const [query, setQuery] = useState("Warszawa");
   const [lat, setLat] = useState(52);
   const [lng, setLng] = useState(19);
-  const [zoom, setZoom] = useState(1);
+  const [zoom, setZoom] = useState(6);
 
   const handleChange = async (data, coords) => {
     if (data) {
@@ -35,7 +35,7 @@ const App = () => {
       setQuery("Warszawa");
       setLat(52);
       setLng(19);
-      setZoom(1);
+      setZoom(6);
     }
   };
 
