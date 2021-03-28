@@ -20,20 +20,21 @@ const MainContainer = styled.section`
 
 const App = () => {
   const [query, setQuery] = useState("Warszawa");
-  const [lat, setLat] = useState(52.229676);
-  const [lng, setLng] = useState(21.012229);
+  const [lat, setLat] = useState(52);
+  const [lng, setLng] = useState(19);
   const [zoom, setZoom] = useState(1);
 
-  const handleChange = async (data) => {
+  const handleChange = async (data, coords) => {
     if (data) {
-      setQuery(data.text);
-      setLat(data.center[1]);
-      setLng(data.center[0]);
+      console.log(coords);
+      setQuery(data[0].address_components[0].short_name);
+      setLat(coords.lat);
+      setLng(coords.lng);
       setZoom(9);
     } else {
-      setQuery("Kraków");
-      setLat(52.229676);
-      setLng(21.012229);
+      setQuery("Warszawa");
+      setLat(52);
+      setLng(19);
       setZoom(1);
     }
   };
@@ -41,12 +42,19 @@ const App = () => {
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
       (pos) => {
-        console.log(pos.coords.latitude + " " + pos.coords.longitude); // display VALUE
+        console.log(pos.coords.latitude + " " + pos.coords.longitude);
         const lat = pos.coords.latitude;
         const lng = pos.coords.longitude;
         setLat(lat);
         setLng(lng);
         setZoom(9);
+        fetch(
+          `https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyBsWdIdGnDcWj3iXvL6X761wP7I_TwUWGk&latlng=${lat},${lng}&language=pl`
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            setQuery(data.results[0].address_components[2].long_name);
+          });
       },
       (err) => {
         console.log(err);
