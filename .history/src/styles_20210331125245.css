@@ -1,20 +1,8 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 body {
   margin: 0;
   font-family: sans-serif;
   text-align: center;
   background-color: #ecedf0;
-}
-
-.tab-content {
-  display: none;
-}
-
-.tab-content.active {
-  display: block;
 }
 
 /* Additional Material UI styles */

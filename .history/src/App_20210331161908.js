@@ -162,6 +162,11 @@ const App = () => {
           <SearchBox state={handleChange} />
           <CurrentWeather lat={lat} lng={lng} query={query} />
         </div>
+        <div class="w-64">Jutro</div>
+        <div class="w-64">{days[date.getDay() + 2]}</div>
+        <div class="w-64">{days[date.getDay() + 3]}</div>
+        <div class="w-64">{days[date.getDay() + 4]}</div>
+        <div class="w-64">{days[date.getDay() + 5]}</div>
         {/* <div class="col-span-2">
           <SearchBox state={handleChange} />
         </div>

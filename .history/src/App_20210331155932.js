@@ -138,7 +138,7 @@ const App = () => {
               data-target="panel-6"
               class="tab text-gray-600 py-4 px-6 block hover:text-blue-500 focus:outline-none"
             >
-              {days[date.setDate(date.getDate() + 5)]}
+              {days[date.getDay() + 5]}
             </button>
           </nav>
         </div>
@@ -162,6 +162,11 @@ const App = () => {
           <SearchBox state={handleChange} />
           <CurrentWeather lat={lat} lng={lng} query={query} />
         </div>
+        <div class="w-64">Jutro</div>
+        <div class="w-64">{days[date.getDay() + 2]}</div>
+        <div class="w-64">{days[date.getDay() + 3]}</div>
+        <div class="w-64">{days[date.getDay() + 4]}</div>
+        <div class="w-64">{days[date.getDay() + 5]}</div>
         {/* <div class="col-span-2">
           <SearchBox state={handleChange} />
         </div>

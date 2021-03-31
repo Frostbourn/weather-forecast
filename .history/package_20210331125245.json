@@ -1,36 +1,34 @@
 {
-  "name": "weather-forecast-meteopl",
+  "name": "nasa-satellite-view",
   "version": "1.0.0",
   "description": "",
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {
     "@babel/runtime": "7.13.8",
-    "@craco/craco": "^6.1.1",
     "@material-ui/core": "4.11.3",
     "@material-ui/icons": "4.11.2",
     "@material-ui/lab": "4.0.0-alpha.57",
-    "autoprefixer": "^9.8.6",
+    "autoprefixer": "10.2.5",
     "autosuggest-highlight": "3.1.1",
     "leaflet": "1.7.1",
     "lodash": "4.17.21",
-    "postcss": "^7.0.35",
+    "postcss": "8.2.9",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-google-places-autocomplete": "3.3.0",
     "react-leaflet": "3.0.5",
     "react-scripts": "4.0.0",
     "styled-components": "5.2.1",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.4"
+    "tailwindcss": "2.0.4"
   },
   "devDependencies": {
-    "@tailwindcss/postcss7-compat": "^2.0.4",
     "typescript": "4.1.3"
   },
   "scripts": {
-    "start": "craco start",
-    "build": "craco build",
-    "test": "craco test",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
   "browserslist": [

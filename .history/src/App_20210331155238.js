@@ -70,75 +70,30 @@ const App = () => {
       }
     );
   }, []);
-  const tabs = document.querySelectorAll(".tabs");
-  const tab = document.querySelectorAll(".tab");
-  const panel = document.querySelectorAll(".tab-content");
 
-  function onTabClick(event) {
-    // deactivate existing active tabs and panel
-
-    for (let i = 0; i < tab.length; i++) {
-      tab[i].classList.remove("active");
-    }
-
-    for (let i = 0; i < panel.length; i++) {
-      panel[i].classList.remove("active");
-    }
-
-    // activate new tabs and panel
-    event.target.classList.add("active");
-    let classString = event.target.getAttribute("data-target");
-    console.log(classString);
-    document
-      .getElementById("panels")
-      .getElementsByClassName(classString)[0]
-      .classList.add("active");
-  }
-
-  for (let i = 0; i < tab.length; i++) {
-    tab[i].addEventListener("click", onTabClick, false);
-  }
   // console.log(lat);
   return (
     <>
-      <div class="max-w-screen-md bg-white px-8 py-6 rounded-xl space-y-5 items-center mt-40 mx-auto">
+      <div class=" max-w-md bg-white px-8 py-6 rounded-xl space-y-5 items-center mt-40 mx-auto">
         <div class="bg-white">
           <nav class="tabs flex flex-col sm:flex-row">
             <button
               data-target="panel-1"
               class="tab active text-gray-600 py-4 px-6 block hover:text-blue-500 focus:outline-none text-blue-500 border-b-2 font-medium border-blue-500"
             >
-              Dzisiaj
+              Description
             </button>
             <button
               data-target="panel-2"
               class="tab ext-gray-600 py-4 px-6 block hover:text-blue-500 focus:outline-none"
             >
-              Jutro
+              Map and Street View
             </button>
             <button
               data-target="panel-3"
               class="tab text-gray-600 py-4 px-6 block hover:text-blue-500 focus:outline-none"
             >
-              {days[date.getDay() + 2]}
-            </button>
-            <button
-              data-target="panel-4"
-              class="tab text-gray-600 py-4 px-6 block hover:text-blue-500 focus:outline-none"
-            >
-              {days[date.getDay() + 3]}
-            </button>
-            <button
-              data-target="panel-5"
-              class="tab text-gray-600 py-4 px-6 block hover:text-blue-500 focus:outline-none"
-            >
-              {days[date.getDay() + 4]}
-            </button>
-            <button
-              data-target="panel-6"
-              class="tab text-gray-600 py-4 px-6 block hover:text-blue-500 focus:outline-none"
-            >
-              {days[date.setDate(date.getDate() + 5)]}
+              Other info
             </button>
           </nav>
         </div>
@@ -154,14 +109,16 @@ const App = () => {
           </div>
           <div class="panel-2 tab-content py-5">Map here</div>
           <div class="panel-3 tab-content py-5">other info</div>
-          <div class="panel-4 tab-content py-5">other info</div>
-          <div class="panel-5 tab-content py-5">other info</div>
-          <div class="panel-6 tab-content py-5">other info</div>
         </div>
         <div class="w-full">
           <SearchBox state={handleChange} />
           <CurrentWeather lat={lat} lng={lng} query={query} />
         </div>
+        <div class="w-64">Jutro</div>
+        <div class="w-64">{days[date.getDay() + 2]}</div>
+        <div class="w-64">{days[date.getDay() + 3]}</div>
+        <div class="w-64">{days[date.getDay() + 4]}</div>
+        <div class="w-64">{days[date.getDay() + 5]}</div>
         {/* <div class="col-span-2">
           <SearchBox state={handleChange} />
         </div>

@@ -9,14 +9,6 @@ body {
   background-color: #ecedf0;
 }
 
-.tab-content {
-  display: none;
-}
-
-.tab-content.active {
-  display: block;
-}
-
 /* Additional Material UI styles */
 .leaflet-container {
   margin: 15px;

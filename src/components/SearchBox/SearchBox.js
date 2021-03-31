@@ -4,7 +4,7 @@ import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import GooglePlacesAutocomplete, {
   geocodeByAddress,
-  getLatLng
+  getLatLng,
 } from "react-google-places-autocomplete";
 
 const SearchBox = ({ state, coords }) => {
@@ -48,9 +48,9 @@ const SearchBox = ({ state, coords }) => {
         apiOptions={{ language: "pl", region: "pl" }}
         autocompletionRequest={{
           componentRestrictions: {
-            country: ["pl"]
+            country: ["pl"],
           },
-          types: ["(cities)"]
+          types: ["(cities)"],
         }}
         debounce={500}
         onLoadFailed={(error) =>
@@ -68,7 +68,7 @@ const SearchBox = ({ state, coords }) => {
             console.log("onMenuOpen");
             setLocation(null);
           },
-          isClearable: true
+          isClearable: true,
         }}
       />
       {/* <Autocomplete
