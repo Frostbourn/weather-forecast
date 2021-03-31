@@ -64,20 +64,27 @@ const App = () => {
 
   // console.log(lat);
   return (
-    <MainContainer>
-      <Grid container justify="center">
-        <Grid item xs={10} md={8}>
-          <Card className="app__content">
-            <CardContent>
-              <SearchBox state={handleChange} />
-              <CurrentWeather lat={lat} lng={lng} query={query} />
-              <Map className="content__map" lat={lat} lng={lng} zoom={zoom} />
-              {/* {lat ? <Photo props={this.state} /> : ""} */}
-            </CardContent>
-          </Card>
+    <>
+      <div class="grid grid-rows-3 grid-flow-col gap-4 max-w-md bg-white px-8 py-6 rounded-xl space-y-5 items-center">
+        <div class="row-span-3">1</div>
+        <div class="col-span-2">2</div>
+        <div class="row-span-2 col-span-2">3</div>
+      </div>
+      <MainContainer>
+        <Grid container justify="center">
+          <Grid item xs={10} md={8}>
+            <Card className="app__content">
+              <CardContent>
+                <SearchBox state={handleChange} />
+                <CurrentWeather lat={lat} lng={lng} query={query} />
+                <Map className="content__map" lat={lat} lng={lng} zoom={zoom} />
+                {/* {lat ? <Photo props={this.state} /> : ""} */}
+              </CardContent>
+            </Card>
+          </Grid>
         </Grid>
-      </Grid>
-    </MainContainer>
+      </MainContainer>
+    </>
   );
 };
 export default App;
