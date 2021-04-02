@@ -26,14 +26,14 @@ const App = () => {
 
   const getDays = (dateObj, numDays) => {
     dateObj.setDate(dateObj.getDate() + numDays);
-    return dateObj.toLocaleString("default", { weekday: "long" });
+    return dateObj;
   };
 
-  const thirdDay = getDays(new Date(), 2);
-  const fourthDay = getDays(new Date(), 3);
-  const fifthDay = getDays(new Date(), 4);
-  const sixthDay = getDays(new Date(), 5);
-  const seventhDay = getDays(new Date(), 6);
+  let thirdDay = getDays(new Date(), 3);
+  let fourthDay = getDays(new Date(), 4);
+  let fifthDay = getDays(new Date(), 5);
+  let sixthDay = getDays(new Date(), 6);
+  let seventhDay = getDays(new Date(), 7);
 
   const handleChange = async (data, coords) => {
     if (data) {
@@ -129,19 +129,19 @@ const App = () => {
               data-target="panel-4"
               class="tab text-gray-600 py-4 px-6 block hover:text-blue-500 focus:outline-none"
             >
-              {fourthDay}
+              {weekday}
             </button>
             <button
               data-target="panel-5"
               class="tab text-gray-600 py-4 px-6 block hover:text-blue-500 focus:outline-none"
             >
-              {fifthDay}
+              {weekday}
             </button>
             <button
               data-target="panel-6"
               class="tab text-gray-600 py-4 px-6 block hover:text-blue-500 focus:outline-none"
             >
-              {sixthDay}
+              {weekday}
             </button>
           </nav>
         </div>

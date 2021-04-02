@@ -29,11 +29,12 @@ const App = () => {
     return dateObj.toLocaleString("default", { weekday: "long" });
   };
 
-  const thirdDay = getDays(new Date(), 2);
-  const fourthDay = getDays(new Date(), 3);
-  const fifthDay = getDays(new Date(), 4);
-  const sixthDay = getDays(new Date(), 5);
-  const seventhDay = getDays(new Date(), 6);
+  const date = new Date();
+  const thirdDay = getDays(date, 3);
+  const fourthDay = getDays(date, 4);
+  const fifthDay = getDays(date, 5);
+  const sixthDay = getDays(date, 6);
+  const seventhDay = getDays(date, 7);
 
   const handleChange = async (data, coords) => {
     if (data) {
@@ -129,7 +130,7 @@ const App = () => {
               data-target="panel-4"
               class="tab text-gray-600 py-4 px-6 block hover:text-blue-500 focus:outline-none"
             >
-              {fourthDay}
+              {fourtDay}
             </button>
             <button
               data-target="panel-5"

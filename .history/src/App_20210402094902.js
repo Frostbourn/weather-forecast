@@ -29,11 +29,12 @@ const App = () => {
     return dateObj.toLocaleString("default", { weekday: "long" });
   };
 
-  const thirdDay = getDays(new Date(), 2);
-  const fourthDay = getDays(new Date(), 3);
-  const fifthDay = getDays(new Date(), 4);
-  const sixthDay = getDays(new Date(), 5);
-  const seventhDay = getDays(new Date(), 6);
+  const date = new Date();
+  const thirdDay = getDays(new Date(), 1);
+  const fourthDay = getDays(new Date(), 2);
+  const fifthDay = getDays(new Date(), 3);
+  const sixthDay = getDays(new Date(), 4);
+  const seventhDay = getDays(new Date(), 5);
 
   const handleChange = async (data, coords) => {
     if (data) {

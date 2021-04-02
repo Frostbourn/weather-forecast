@@ -23,17 +23,17 @@ const App = () => {
   const [lat, setLat] = useState(52);
   const [lng, setLng] = useState(19);
   const [zoom, setZoom] = useState(6);
-
-  const getDays = (dateObj, numDays) => {
-    dateObj.setDate(dateObj.getDate() + numDays);
-    return dateObj.toLocaleString("default", { weekday: "long" });
-  };
-
-  const thirdDay = getDays(new Date(), 2);
-  const fourthDay = getDays(new Date(), 3);
-  const fifthDay = getDays(new Date(), 4);
-  const sixthDay = getDays(new Date(), 5);
-  const seventhDay = getDays(new Date(), 6);
+  let date = new Date();
+  // var days = [
+  //   "Niedziela",
+  //   "Poniedziałek",
+  //   "Wtorek",
+  //   "Środa",
+  //   "Czwartek",
+  //   "Piątek",
+  //   "Sobota",
+  // ];
+  var weekday = date.toLocaleString("default", { weekday: "long" });
 
   const handleChange = async (data, coords) => {
     if (data) {
@@ -123,25 +123,25 @@ const App = () => {
               data-target="panel-3"
               class="tab text-gray-600 py-4 px-6 block hover:text-blue-500 focus:outline-none"
             >
-              {thirdDay}
+              {weekday}
             </button>
             <button
               data-target="panel-4"
               class="tab text-gray-600 py-4 px-6 block hover:text-blue-500 focus:outline-none"
             >
-              {fourthDay}
+              {weekday}
             </button>
             <button
               data-target="panel-5"
               class="tab text-gray-600 py-4 px-6 block hover:text-blue-500 focus:outline-none"
             >
-              {fifthDay}
+              {weekday}
             </button>
             <button
               data-target="panel-6"
               class="tab text-gray-600 py-4 px-6 block hover:text-blue-500 focus:outline-none"
             >
-              {sixthDay}
+              {days[date.setDate(date.getDate() + 5)]}
             </button>
           </nav>
         </div>
