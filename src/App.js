@@ -103,43 +103,43 @@ const App = () => {
   // console.log(lat);
   return (
     <>
-      <div class="max-w-screen-md bg-white px-8 py-6 rounded-xl space-y-5 items-center mt-40 mx-auto">
-        <div class="bg-white">
+      <div className="max-w-screen-md bg-white px-8 py-6 rounded-xl space-y-5 items-center mt-40 mx-auto">
+        <div className="bg-white">
           <SearchBox state={handleChange} />
-          <nav class="tabs flex flex-col sm:flex-row">
+          <nav className="tabs flex flex-col sm:flex-row">
             <button
               data-target="panel-1"
-              class="tab active text-gray-600 py-4 px-6 block hover:text-blue-500 focus:outline-none text-blue-500 border-b-2 font-medium border-blue-500"
+              className="tab active text-gray-600 py-4 px-6 block hover:text-blue-500 focus:outline-none text-blue-500 border-b-2 font-medium border-blue-500"
             >
               Dzisiaj
             </button>
             <button
               data-target="panel-2"
-              class="tab ext-gray-600 py-4 px-6 block hover:text-blue-500 focus:outline-none"
+              className="tab ext-gray-600 py-4 px-6 block hover:text-blue-500 focus:outline-none"
             >
               Jutro
             </button>
             <button
               data-target="panel-3"
-              class="tab text-gray-600 py-4 px-6 block hover:text-blue-500 focus:outline-none"
+              className="tab text-gray-600 py-4 px-6 block hover:text-blue-500 focus:outline-none"
             >
               {thirdDay}
             </button>
             <button
               data-target="panel-4"
-              class="tab text-gray-600 py-4 px-6 block hover:text-blue-500 focus:outline-none"
+              className="tab text-gray-600 py-4 px-6 block hover:text-blue-500 focus:outline-none"
             >
               {fourthDay}
             </button>
             <button
               data-target="panel-5"
-              class="tab text-gray-600 py-4 px-6 block hover:text-blue-500 focus:outline-none"
+              className="tab text-gray-600 py-4 px-6 block hover:text-blue-500 focus:outline-none"
             >
               {fifthDay}
             </button>
             <button
               data-target="panel-6"
-              class="tab text-gray-600 py-4 px-6 block hover:text-blue-500 focus:outline-none"
+              className="tab text-gray-600 py-4 px-6 block hover:text-blue-500 focus:outline-none"
             >
               {sixthDay}
             </button>
@@ -147,20 +147,20 @@ const App = () => {
         </div>
 
         <div id="panels">
-          <div class="panel-1 tab-content active py-5">
+          <div className="panel-1 tab-content active py-5">
             <CurrentWeather lat={lat} lng={lng} query={query} />
           </div>
-          <div class="panel-2 tab-content py-5">Map here</div>
-          <div class="panel-3 tab-content py-5">other info</div>
-          <div class="panel-4 tab-content py-5">other info</div>
-          <div class="panel-5 tab-content py-5">other info</div>
-          <div class="panel-6 tab-content py-5">other info</div>
+          <div className="panel-2 tab-content py-5">Map here</div>
+          <div className="panel-3 tab-content py-5">other info</div>
+          <div className="panel-4 tab-content py-5">other info</div>
+          <div className="panel-5 tab-content py-5">other info</div>
+          <div className="panel-6 tab-content py-5">other info</div>
         </div>
-        <div class="w-full"></div>
-        {/* <div class="col-span-2">
+        <div className="w-full"></div>
+        {/* <div className="col-span-2">
           <SearchBox state={handleChange} />
         </div>
-        <div class="row-span-2 col-span-2">3</div> */}
+        <div className="row-span-2 col-span-2">3</div> */}
       </div>
       {/* <MainContainer>
         <Grid container justify="center">

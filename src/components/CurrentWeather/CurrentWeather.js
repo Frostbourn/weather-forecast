@@ -8,9 +8,13 @@ const CurrentWeather = ({ lat, lng, query }) => {
   const [data, setData] = useState([]);
   const [maxTemp, setMaxTemp] = useState();
   const [minTemp, setMinTemp] = useState();
+  const [snow, setSnow] = useState();
   const [rain, setRain] = useState();
   const [wind, setWind] = useState();
-  let date = new Date();
+  const [windDirection, setWindDirection] = useState();
+  const [pressure, setPressure] = useState();
+  const [sunrise, setSunrise] = useState();
+  const [sunset, setSunset] = useState();
 
   useEffect(() => {
     const fetchAPI = async () => {
@@ -20,60 +24,62 @@ const CurrentWeather = ({ lat, lng, query }) => {
         .then((response) => response.json())
         .then((data) => {
           setData(data.forecasts);
-          const maxTemp = Math.max.apply(
-            Math,
-            data.forecasts.hourly
-              .slice(0, 23)
-              .map((o) => Math.round(o.temperature))
-          );
-          const minTemp = Math.min.apply(
-            Math,
-            data.forecasts.hourly
-              .slice(0, 23)
-              .map((o) => Math.round(o.temperature))
-          );
-          const rain = data.forecasts.hourly
-            .slice(0, 23)
-            .map((o) => Math.round(o.rain))
-            .reduce((prev, curr) => prev + curr, 0);
 
-          const wind = Math.max.apply(
-            Math,
-            data.forecasts.hourly
-              .slice(0, 23)
-              .map((o) => Math.round(o.windSpeed))
+          data.forecasts.hourly.slice(0, 23).map((day, index) => {
+            let date = new Date();
+            let date2 = new Date(day.dateTime);
+            if (date.getHours() === date2.getHours()) {
+              console.log("sukces");
+              console.log(day);
+              const maxTemp = Math.round(day.temperature);
+              //const minTemp =  Math.round(day.temperature);
+              const rain = Math.round(day.rain);
+              const wind = Math.round(day.windSpeed);
+              const windDirection = day.windDirection;
+              const pressure = Math.round(day.groundPressure);
+              const snow = Math.round(day.snow);
+              setMaxTemp(maxTemp);
+              //setMinTemp(minTemp);
+              setRain(rain);
+              setSnow(snow);
+              setWind(wind);
+              setWindDirection(windDirection);
+              setPressure(pressure);
+            }
+          });
+
+          setSunrise(
+            new Date(data.forecasts.sun[0].sunrise).toLocaleString("pl-PL", {
+              hour: "2-digit",
+              minute: "2-digit",
+            })
           );
-          console.log(wind);
-          setMaxTemp(maxTemp);
-          setMinTemp(minTemp);
-          setRain(rain);
-          setWind(wind);
+          setSunset(
+            new Date(data.forecasts.sun[0].sunset).toLocaleString("pl-PL", {
+              hour: "2-digit",
+              minute: "2-digit",
+            })
+          );
         });
     };
     fetchAPI();
   }, [lat, lng]);
 
-  // const handleInputChange = (event, value) => {
-  //   value ? setQuery(value) : ""; /* eslint-disable-line */
-  // };
-
-  // const handleChange = (event, value) => {
-  //   state(value);
-  // };
-
   return (
     <>
-      <div class=" cursor-pointer border b-gray-400 rounded flex flex-col justify-center mt-6 mx-auto items-center text-center p-6 bg-white">
-        <div class="text-md font-bold flex flex-col text-gray-900">
-          <span class="uppercase">{query}</span>
-          <span>31 Marzec</span>
+      <div className=" cursor-pointer border b-gray-400 rounded flex flex-col justify-center mt-6 mx-auto items-center text-center p-6 bg-white">
+        <div className="text-md font-bold flex flex-col text-gray-900">
+          <span className="uppercase">{query}</span>
           <span>
-            {date.getHours()}:{date.getMinutes()}
+            Wschód: {sunrise}; Zachód: {sunset}
           </span>
+          {/* <span>
+            {date.getHours()}:{date.getMinutes()}
+          </span> */}
         </div>
-        <div class="w-32 h-32 flex items-center justify-center">
+        <div className="w-32 h-32 flex items-center justify-center">
           <svg
-            class="h-20"
+            className="h-20"
             viewBox="0 0 81 73"
             version="1.1"
             xmlns="http://www.w3.org/2000/svg"
@@ -81,14 +87,14 @@ const CurrentWeather = ({ lat, lng, query }) => {
             <g
               id="Page-1"
               stroke="none"
-              stroke-width="1"
+              strokeWidth="1"
               fill="none"
-              fill-rule="evenodd"
+              fillRule="evenodd"
             >
               <g
                 id="Desktop-HD"
                 transform="translate(-174.000000, -308.000000)"
-                fill-rule="nonzero"
+                fillRule="nonzero"
               >
                 <g id="Group" transform="translate(95.000000, 222.000000)">
                   <g id="2" transform="translate(79.000000, 86.000000)">
@@ -108,16 +114,16 @@ const CurrentWeather = ({ lat, lng, query }) => {
             </g>
           </svg>
         </div>
-        <p class="text-gray-700 mb-2">Częsciowe zachmurzenie</p>
-        <div class="text-3xl font-bold text-gray-900 mb-6">
+        <p className="text-gray-700 mb-2">Aktualna prognoza</p>
+        <div className="text-3xl font-bold text-gray-900 mb-6">
           {maxTemp ? maxTemp + "º" : "..."}
-          <span class="font-normal text-gray-700 mx-1">/</span>
-          {minTemp ? minTemp + "º" : "..."}
+          {/* <span className="font-normal text-gray-700 mx-1">/</span>
+          {minTemp ? minTemp + "º" : "..."} */}
         </div>
-        <div class="flex justify-between w-full">
-          <div class="flex items-center text-gray-700 px-2">
+        <div className="flex justify-between w-full">
+          <div className="flex items-center text-gray-700 px-2">
             <svg
-              class="mr-2 h-4"
+              className="mr-2 h-4"
               viewBox="0 0 11 18"
               version="1.1"
               xmlns="http://www.w3.org/2000/svg"
@@ -125,15 +131,15 @@ const CurrentWeather = ({ lat, lng, query }) => {
               <g
                 id="Page-1"
                 stroke="none"
-                stroke-width="1"
+                strokeWidth="1"
                 fill="none"
-                fill-rule="evenodd"
+                fillRule="evenodd"
               >
                 <g
                   id="Desktop-HD"
                   transform="translate(-120.000000, -479.000000)"
                   fill="#60A2D7"
-                  fill-rule="nonzero"
+                  fillRule="nonzero"
                 >
                   <g id="Group" transform="translate(95.000000, 222.000000)">
                     <g
@@ -154,11 +160,20 @@ const CurrentWeather = ({ lat, lng, query }) => {
                 </g>
               </g>
             </svg>
-            {rain ? rain : rain > 0 ? "..." : 0} l/m<sup>2</sup>
+            {snow
+              ? snow
+              : snow > 0
+              ? "..."
+              : rain
+              ? rain
+              : rain > 0
+              ? "..."
+              : 0}{" "}
+            l/m<sup>2</sup>
           </div>
-          <div class="flex items-center text-gray-700 px-2">
+          <div className="flex items-center text-gray-700 px-2">
             <svg
-              class="mr-2 h-4 w-4"
+              className="mr-2 h-4 w-4"
               viewBox="0 0 12 21"
               version="1.1"
               xmlns="http://www.w3.org/2000/svg"
@@ -166,15 +181,71 @@ const CurrentWeather = ({ lat, lng, query }) => {
               <g
                 id="Page-1"
                 stroke="none"
-                stroke-width="1"
+                strokeWidth="1"
                 fill="none"
-                fill-rule="evenodd"
+                fillRule="evenodd"
               >
                 <g
                   id="Desktop-HD"
                   transform="translate(-201.000000, -480.000000)"
                   fill="#0ABDE3"
-                  fill-rule="nonzero"
+                  fillRule="nonzero"
+                >
+                  <g id="Group" transform="translate(95.000000, 222.000000)">
+                    <g
+                      id="Group-3"
+                      transform="translate(25.000000, 256.774194)"
+                    >
+                      <g
+                        id="wind"
+                        transform="translate(87.500000, 11.225806) rotate(-90.000000) translate(-87.500000, -11.225806) translate(77.000000, 5.225806)"
+                      >
+                        <g id="w25">
+                          <path
+                            d="M16.222113,3.9997453 C16.1020238,4.11833549 16.0351226,4.28256699 16.0372726,4.45349848 C16.0394226,4.62442997 16.1104323,4.78683812 16.2334644,4.90221395 C16.6379853,5.28943966 17.0750123,5.74649295 17.5388698,6.22999608 C17.7684767,6.47016066 18.06,6.8515674 18.2916708,7.08908699 C16.7035135,7.07321708 16.0399754,7.11553683 15.1586978,7.07639107 C14.8000983,7.05999216 14.595258,7.23032915 14.595258,7.58264107 C14.595258,7.93442398 14.7443735,8.11216693 15.1034889,8.11216693 C15.9563882,8.11216693 16.7896806,8.06878918 18.3881572,8.08571708 C17.6494273,8.82722969 16.9039897,9.56168541 16.151941,10.288989 C16.0291152,10.4045196 15.9582985,10.5669407 15.9562468,10.737822 C15.9541952,10.9087034 16.0210908,11.0728624 16.1411057,11.1914577 C16.3966491,11.4436893 16.7995644,11.4483255 17.0605651,11.2020376 C18.1048894,10.2022335 19.4185504,8.91148119 20.2957002,8.02805643 C20.4143735,7.90850313 20.5072482,7.74874608 20.5072482,7.58264107 L20.5072482,7.56465517 C20.5072482,7.39273119 20.3988943,7.22927116 20.2699017,7.11236285 C19.7188452,6.6151058 19.092457,5.97501959 18.5001229,5.35662226 C18.0589126,4.89113359 17.6081986,4.43521373 17.1482801,3.98916536 C16.8847573,3.74276899 16.4802155,3.74739022 16.222113,3.9997453 L16.222113,3.9997453 Z"
+                            id="Path"
+                          ></path>
+                          <path
+                            d="M0,7.255721 C0,7.04623824 0.165110565,6.87695925 0.369434889,6.87695925 L18.7214742,6.87695925 C18.9252826,6.87695925 19.0909091,7.04623824 19.0909091,7.255721 L19.0909091,8.08518809 C19.0909091,8.29467085 18.9257985,8.46394984 18.7214742,8.46394984 L0.369434889,8.46394984 C0.165401634,8.46394984 0,8.29437243 0,8.08518809 L0,7.255721 Z"
+                            id="Path"
+                          ></path>
+                          <path
+                            d="M0.369434889,8.46394984 C0.165401634,8.46394984 0,8.29437243 0,8.08518809 L0,0.378761755 C0,0.169278997 0.165110565,0 0.369434889,0 L1.17847666,0 C1.38228501,0 1.54791155,0.169278997 1.54791155,0.378761755 L1.54791155,8.08518809 C1.54791155,8.29414185 1.38280098,8.46394984 1.17847666,8.46394984 L0.369434889,8.46394984 Z"
+                            id="Path"
+                          ></path>
+                        </g>
+                        <path
+                          d="M4.108,8.53448276 C3.91028206,8.53448276 3.75,8.3634922 3.75,8.15256466 L3.75,0.381918103 C3.75,0.170689655 3.91,0 4.108,0 L4.892,0 C5.0895,0 5.25,0.170689655 5.25,0.381918103 L5.25,8.15256466 C5.25,8.3632597 5.09,8.53448276 4.892,8.53448276 L4.108,8.53448276 Z"
+                          id="Path"
+                        ></path>
+                      </g>
+                    </g>
+                  </g>
+                </g>
+              </g>
+            </svg>
+            {pressure ? pressure + " hPa" : "..."}
+          </div>
+          <div className="flex items-center text-gray-700 px-2">
+            <svg
+              className="mr-2 h-4 w-4"
+              viewBox="0 0 12 21"
+              version="1.1"
+              xmlns="http://www.w3.org/2000/svg"
+              style={{ transform: `rotate(${windDirection}deg)` }}
+            >
+              <g
+                id="Page-1"
+                stroke="none"
+                strokeWidth="1"
+                fill="none"
+                fillRule="evenodd"
+              >
+                <g
+                  id="Desktop-HD"
+                  transform="translate(-201.000000, -480.000000)"
+                  fill="#0ABDE3"
+                  fillRule="nonzero"
                 >
                   <g id="Group" transform="translate(95.000000, 222.000000)">
                     <g
