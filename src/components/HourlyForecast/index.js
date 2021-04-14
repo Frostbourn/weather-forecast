@@ -64,7 +64,9 @@ const HourlyForecast = ({ data }) => {
         </div>
       );
     });
-  return <div className="hourly-forecast">{forecast}</div>;
+  return (
+    <div className="hourly-forecast">{forecast ? forecast : "Loading..."}</div>
+  );
 };
 
 export default HourlyForecast;

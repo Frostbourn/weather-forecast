@@ -35,27 +35,27 @@ const App = () => {
     }
   };
 
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition(
-      (pos) => {
-        //(pos.coords.latitude + " " + pos.coords.longitude);
-        const lat = pos.coords.latitude;
-        const lng = pos.coords.longitude;
-        setLat(lat);
-        setLng(lng);
-        fetch(
-          `https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyBsWdIdGnDcWj3iXvL6X761wP7I_TwUWGk&latlng=${lat},${lng}&language=pl`
-        )
-          .then((response) => response.json())
-          .then((data) => {
-            setQuery(data.results[0].address_components[2].long_name);
-          });
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
-  }, []);
+  // useEffect(() => {
+  //   navigator.geolocation.getCurrentPosition(
+  //     (pos) => {
+  //       //(pos.coords.latitude + " " + pos.coords.longitude);
+  //       const lat = pos.coords.latitude;
+  //       const lng = pos.coords.longitude;
+  //       setLat(lat);
+  //       setLng(lng);
+  //       fetch(
+  //         `https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyBsWdIdGnDcWj3iXvL6X761wP7I_TwUWGk&latlng=${lat},${lng}&language=pl`
+  //       )
+  //         .then((response) => response.json())
+  //         .then((data) => {
+  //           setQuery(data.results[0].address_components[2].long_name);
+  //         });
+  //     },
+  //     (err) => {
+  //       console.log(err);
+  //     }
+  //   );
+  // }, []);
 
   return (
     <>

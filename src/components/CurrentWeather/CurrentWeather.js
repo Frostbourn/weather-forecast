@@ -105,11 +105,11 @@ const CurrentWeather = ({ lat, lng, query }) => {
               <WiRaindrop size={24} color="#000" />
             )}
             {snow
-              ? snow + rain
+              ? (snow + rain).toFixed(1)
               : snow > 0
               ? "..."
               : rain
-              ? rain + snow
+              ? (rain + snow).toFixed(1)
               : rain > 0
               ? "..."
               : 0}{" "}
