@@ -106,77 +106,13 @@ const App = () => {
     <>
       <div className="max-w-screen-md bg-white px-8 py-6 rounded-xl space-y-5 items-center mt-40 mx-auto">
         <div className="bg-white">
-          <SearchBox state={handleChange} />
-          <nav className="tabs flex flex-col sm:flex-row">
-            <button
-              data-target="panel-1"
-              className="tab active text-gray-600 py-4 px-6 block hover:text-blue-500 focus:outline-none text-blue-500 border-b-2 font-medium border-blue-500"
-            >
-              Dzisiaj
-            </button>
-            <button
-              data-target="panel-2"
-              className="tab ext-gray-600 py-4 px-6 block hover:text-blue-500 focus:outline-none"
-            >
-              Jutro
-            </button>
-            <button
-              data-target="panel-3"
-              className="tab text-gray-600 py-4 px-6 block hover:text-blue-500 focus:outline-none"
-            >
-              {thirdDay}
-            </button>
-            <button
-              data-target="panel-4"
-              className="tab text-gray-600 py-4 px-6 block hover:text-blue-500 focus:outline-none"
-            >
-              {fourthDay}
-            </button>
-            <button
-              data-target="panel-5"
-              className="tab text-gray-600 py-4 px-6 block hover:text-blue-500 focus:outline-none"
-            >
-              {fifthDay}
-            </button>
-            <button
-              data-target="panel-6"
-              className="tab text-gray-600 py-4 px-6 block hover:text-blue-500 focus:outline-none"
-            >
-              {sixthDay}
-            </button>
-          </nav>
-        </div>
+          <div className="w-full">
+            <SearchBox state={handleChange} />
 
-        <div id="panels">
-          <div className="panel-1 tab-content active py-5">
             <CurrentWeather lat={lat} lng={lng} query={query} />
           </div>
-          <div className="panel-2 tab-content py-5">Map here</div>
-          <div className="panel-3 tab-content py-5">other info</div>
-          <div className="panel-4 tab-content py-5">other info</div>
-          <div className="panel-5 tab-content py-5">other info</div>
-          <div className="panel-6 tab-content py-5">other info</div>
         </div>
-        <div className="w-full"></div>
-        {/* <div className="col-span-2">
-          <SearchBox state={handleChange} />
-        </div>
-        <div className="row-span-2 col-span-2">3</div> */}
       </div>
-      {/* <MainContainer>
-        <Grid container justify="center">
-          <Grid item xs={10} md={8}>
-            <Card className="app__content">
-              <CardContent>
-                <SearchBox state={handleChange} />
-                <CurrentWeather lat={lat} lng={lng} query={query} />
-                <Map className="content__map" lat={lat} lng={lng} zoom={zoom} />
-                 {lat ? <Photo props={this.state} /> : ""}
-              </CardContent>
-            </Card>
-          </Grid>
-        </Grid>
-      </MainContainer> */}
     </>
   );
 };
