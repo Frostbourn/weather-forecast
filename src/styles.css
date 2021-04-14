@@ -44,8 +44,8 @@ body {
   position: absolute;
   bottom: 0px;
   left: 0px;
-  width: 100%;
   display: inline-block;
+  width: 100%;
 }
 
 .tab-content {

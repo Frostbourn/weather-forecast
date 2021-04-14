@@ -2,15 +2,16 @@ import React, { useState, useEffect } from "react";
 import { WiWindDeg } from "weather-icons-react";
 
 const HourlyForecast = ({ data }) => {
+  //console.log(data);
   const filteredFromNow =
     data.hourly &&
     !!data.hourly.length &&
     data.hourly.filter((item) => {
       let date = new Date();
       let date2 = new Date(item.dateTime);
-      return date2 >= date;
+      return date2 > date;
     });
-
+  console.log(filteredFromNow);
   const forecast =
     filteredFromNow &&
     !!filteredFromNow &&
@@ -27,20 +28,24 @@ const HourlyForecast = ({ data }) => {
           <p
             className="rain p-3"
             style={{
-              paddingBottom: `${Math.round(item.rain + item.snow * 10) + 1}px`,
+              paddingBottom: `${
+                Math.round((item.rain + item.snow) * 10) + 1
+              }px`,
             }}
           >
             <span
               className="drops text-sm bg-blue-600"
-              style={{ height: `${Math.round(item.rain + item.snow * 10)}px` }}
+              style={{
+                height: `${Math.round((item.rain + item.snow) * 10)}px`,
+              }}
             ></span>
             <span
               className="snow bg-blue-400"
               style={{ height: `${Math.round(item.snow * 10)}px` }}
             ></span>
             <span className="text-sm text-blue-600 font-bold">
-              {Math.round(item.rain + item.snow) > 0
-                ? Math.round(item.rain + item.snow * 10) / 10
+              {item.rain + item.snow > 0
+                ? (item.rain + item.snow).toFixed(1)
                 : ""}
             </span>
           </p>
