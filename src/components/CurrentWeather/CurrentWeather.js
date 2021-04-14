@@ -43,11 +43,11 @@ const CurrentWeather = ({ lat, lng, query }) => {
               //console.log(day);
               const maxTemp = Math.round(day.temperature);
               //const minTemp =  Math.round(day.temperature);
-              const rain = Math.round(day.rain);
+              const rain = Math.round(day.rain * 10) / 10;
               const wind = Math.round(day.windSpeed);
               const windDirection = day.windDirection;
               const pressure = Math.round(day.groundPressure);
-              const snow = Math.round(day.snow);
+              const snow = Math.round(day.snow * 10) / 10;
               setMaxTemp(maxTemp);
               //setMinTemp(minTemp);
               setRain(rain);
@@ -114,7 +114,7 @@ const CurrentWeather = ({ lat, lng, query }) => {
               : snow > 0
               ? "..."
               : rain
-              ? rain
+              ? rain + snow
               : rain > 0
               ? "..."
               : 0}{" "}

@@ -4,9 +4,9 @@
 
 body {
   margin: 0;
+  background-color: #ecedf0;
   font-family: sans-serif;
   text-align: center;
-  background-color: #ecedf0;
 }
 
 .hourly-forecast {
@@ -15,9 +15,32 @@ body {
 }
 
 .hourly-forecast .column {
-  padding: 10px;
-  border-right: 1px solid lightgray;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  min-width: 100px;
+  padding: 10px 0;
 }
+
+.hourly-forecast .column .rain {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  min-height: 50px;
+  width: 100%;
+}
+
+.hourly-forecast .column .rain .drops {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  display: inline-block;
+  background: rgb(67, 180, 255);
+  width: 100%;
+}
+
 
 .tab-content {
   display: none;
@@ -29,9 +52,9 @@ body {
 
 /* Additional Material UI styles */
 .leaflet-container {
+  border-radius: 0.25rem;
   margin: 15px;
   height: 300px;
-  border-radius: 0.25rem;
 }
 
 .MuiAutocomplete-root {
@@ -39,10 +62,10 @@ body {
 }
 
 .MuiCard-root {
+  border: none !important;
+  border-radius: 0.25rem !important;
+  background-color: #fff !important;
   padding: 1vw;
   box-shadow: 0 2px 0 rgba(90, 97, 105, 0.11), 0 4px 8px rgba(90, 97, 105, 0.12),
     0 10px 10px rgba(90, 97, 105, 0.06), 0 7px 70px rgba(90, 97, 105, 0.1) !important;
-  background-color: #fff !important;
-  border: none !important;
-  border-radius: 0.25rem !important;
 }
