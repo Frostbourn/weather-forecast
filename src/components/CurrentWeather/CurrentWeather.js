@@ -8,9 +8,6 @@ import {
 import WeatherIcon from "../WeatherIcon/WeatherIcon.js";
 import HourlyForecast from "../HourlyForecast";
 
-// import TextField from "@material-ui/core/TextField";
-// import Autocomplete from "@material-ui/lab/Autocomplete";
-
 const CurrentWeather = ({ lat, lng, query }) => {
   //console.log(state)
   const [data, setData] = useState([]);
@@ -39,8 +36,6 @@ const CurrentWeather = ({ lat, lng, query }) => {
             let date = new Date().getHours();
             let date2 = new Date(day.dateTime).getHours();
             if (date === date2) {
-              //console.log("sukces");
-              //console.log(day);
               const maxTemp = Math.round(day.temperature);
               //const minTemp =  Math.round(day.temperature);
               const rain = Math.round(day.rain * 10) / 10;

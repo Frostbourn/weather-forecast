@@ -11,7 +11,7 @@ const HourlyForecast = ({ data }) => {
       let date2 = new Date(item.dateTime);
       return date2 >= date;
     });
-  console.log(filteredFromNow);
+  //console.log(filteredFromNow);
   const forecast =
     filteredFromNow &&
     !!filteredFromNow &&
