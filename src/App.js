@@ -104,7 +104,7 @@ const App = () => {
   // console.log(lat);
   return (
     <>
-      <div className="max-w-screen-md bg-white px-8 py-6 rounded-xl space-y-5 items-center mt-40 mx-auto">
+      <div className="max-w-screen-md bg-white px-8 py-6 rounded-xl space-y-5 items-center mt-20 mx-auto">
         <div className="bg-white">
           <div className="w-full">
             <SearchBox state={handleChange} />

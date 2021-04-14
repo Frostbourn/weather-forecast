@@ -14,7 +14,7 @@ const HourlyForecast = ({ data }) => {
   const forecast =
     filteredFromNow &&
     !!filteredFromNow &&
-    filteredFromNow.slice(0, 23).map((item, index) => {
+    filteredFromNow.slice(0, 48).map((item, index) => {
       return (
         <div key={index} className="column">
           <p className="font-bold pt-3">
@@ -31,15 +31,18 @@ const HourlyForecast = ({ data }) => {
             }}
           >
             <span
-              className="drops"
+              className="drops text-sm bg-blue-600"
               style={{ height: `${Math.round(item.rain + item.snow * 10)}px` }}
+            ></span>
+            <span
+              className="snow bg-blue-400"
+              style={{ height: `${Math.round(item.snow * 10)}px` }}
             ></span>
             <span className="text-sm text-blue-600 font-bold">
               {Math.round(item.rain + item.snow) > 0
                 ? Math.round(item.rain + item.snow * 10) / 10
                 : ""}
             </span>
-            {/* <span className="text-xs">mm/h</span> */}
           </p>
           <p className="flex justify-center w-full py-4 bg-gray-50">
             <WiWindDeg

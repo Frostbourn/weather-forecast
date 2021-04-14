@@ -37,10 +37,16 @@ body {
   bottom: 0px;
   left: 0px;
   display: inline-block;
-  background: rgb(67, 180, 255);
   width: 100%;
 }
 
+.hourly-forecast .column .rain .snow {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  display: inline-block;
+}
 
 .tab-content {
   display: none;
