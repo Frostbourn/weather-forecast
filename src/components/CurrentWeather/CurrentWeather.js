@@ -36,9 +36,9 @@ const CurrentWeather = ({ lat, lng, query }) => {
           setData(data.forecasts);
 
           data.forecasts.hourly.slice(0, 23).map((day, index) => {
-            let date = new Date();
-            let date2 = new Date(day.dateTime);
-            if (date.getHours() === date2.getHours()) {
+            let date = new Date().getHours();
+            let date2 = new Date(day.dateTime).getHours();
+            if (date === date2) {
               //console.log("sukces");
               //console.log(day);
               const maxTemp = Math.round(day.temperature);
