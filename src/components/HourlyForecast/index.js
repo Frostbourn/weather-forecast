@@ -9,7 +9,7 @@ const HourlyForecast = ({ data }) => {
     data.hourly.filter((item) => {
       let date = new Date();
       let date2 = new Date(item.dateTime);
-      return date2 > date;
+      return date2 >= date;
     });
   console.log(filteredFromNow);
   const forecast =
@@ -17,7 +17,7 @@ const HourlyForecast = ({ data }) => {
     !!filteredFromNow &&
     filteredFromNow.slice(0, 48).map((item, index) => {
       return (
-        <div key={index} className="column">
+        <div key={index} className="column border-solid border border-gray-50">
           <p className="font-bold pt-3">
             {new Date(item.dateTime).toLocaleString("pl-PL", {
               hour: "2-digit",
