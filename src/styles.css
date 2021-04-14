@@ -9,6 +9,16 @@ body {
   background-color: #ecedf0;
 }
 
+.hourly-forecast {
+  display: flex;
+  overflow-x: scroll;
+}
+
+.hourly-forecast .column {
+  padding: 10px;
+  border-right: 1px solid lightgray;
+}
+
 .tab-content {
   display: none;
 }

@@ -1,8 +1,8 @@
 import React from "react";
 import { WiDayCloudy } from "weather-icons-react";
 
-function Weathericon({ isDay }) {
-  console.log(isDay);
+const Weathericon = ({ isDay }) => {
+  //console.log(isDay);
   const iconSize = 72;
   const iconColor = "#000";
   const iconDisplay = (isDay) => {};
@@ -11,6 +11,6 @@ function Weathericon({ isDay }) {
   } else {
     return <h1>Noc</h1>;
   }
-}
+};
 
 export default Weathericon;

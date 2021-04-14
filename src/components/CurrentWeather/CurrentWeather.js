@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { WiWindDeg, WiRaindrop, WiBarometer } from "weather-icons-react";
+import {
+  WiWindDeg,
+  WiRaindrop,
+  WiBarometer,
+  WiSnowflakeCold,
+} from "weather-icons-react";
 import WeatherIcon from "../WeatherIcon/WeatherIcon.js";
+import HourlyForecast from "../HourlyForecast";
 
 // import TextField from "@material-ui/core/TextField";
 // import Autocomplete from "@material-ui/lab/Autocomplete";
@@ -33,8 +39,8 @@ const CurrentWeather = ({ lat, lng, query }) => {
             let date = new Date();
             let date2 = new Date(day.dateTime);
             if (date.getHours() === date2.getHours()) {
-              console.log("sukces");
-              console.log(day);
+              //console.log("sukces");
+              //console.log(day);
               const maxTemp = Math.round(day.temperature);
               //const minTemp =  Math.round(day.temperature);
               const rain = Math.round(day.rain);
@@ -98,9 +104,13 @@ const CurrentWeather = ({ lat, lng, query }) => {
         </div>
         <div className="flex justify-between w-full">
           <div className="flex items-center text-gray-700 px-2">
-            <WiRaindrop size={24} color="#000" />
+            {snow ? (
+              <WiSnowflakeCold size={24} color="#000" />
+            ) : (
+              <WiRaindrop size={24} color="#000" />
+            )}
             {snow
-              ? snow
+              ? snow + rain
               : snow > 0
               ? "..."
               : rain
@@ -108,7 +118,7 @@ const CurrentWeather = ({ lat, lng, query }) => {
               : rain > 0
               ? "..."
               : 0}{" "}
-            mm
+            mm/h
           </div>
           <div className="flex items-center text-gray-700 px-2">
             <WiBarometer size={24} color="#000" />
@@ -124,6 +134,8 @@ const CurrentWeather = ({ lat, lng, query }) => {
           </div>
         </div>
       </div>
+
+      <HourlyForecast data={data} />
     </>
   );
 };

@@ -37,23 +37,24 @@ const App = () => {
 
   const handleChange = async (data, coords) => {
     if (data) {
-      console.log(coords);
+      //console.log(coords);
       setQuery(data[0].address_components[0].short_name);
       setLat(coords.lat);
       setLng(coords.lng);
       setZoom(9);
-    } else {
-      setQuery("Warszawa");
-      setLat(52);
-      setLng(19);
-      setZoom(6);
     }
+    // else {
+    //   setQuery("Warszawa");
+    //   setLat(52);
+    //   setLng(19);
+    //   setZoom(6);
+    // }
   };
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
       (pos) => {
-        console.log(pos.coords.latitude + " " + pos.coords.longitude);
+        //(pos.coords.latitude + " " + pos.coords.longitude);
         const lat = pos.coords.latitude;
         const lng = pos.coords.longitude;
         setLat(lat);
@@ -90,7 +91,7 @@ const App = () => {
     // activate new tabs and panel
     event.target.classList.add("active");
     let classString = event.target.getAttribute("data-target");
-    console.log(classString);
+    //console.log(classString);
     document
       .getElementById("panels")
       .getElementsByClassName(classString)[0]
