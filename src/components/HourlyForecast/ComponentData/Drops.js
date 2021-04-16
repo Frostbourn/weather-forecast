@@ -14,7 +14,7 @@ const Drops = ({ data }) => {
       .map((item, index) => {
         return (
           <span
-            className="rain p-3"
+            className="rain p-3 border-solid border border-gray-50"
             style={{
               paddingBottom: `${
                 Math.round((item.rain + item.snow) * 10) + 1

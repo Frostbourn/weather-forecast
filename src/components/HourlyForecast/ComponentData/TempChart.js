@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Line } from "react-chartjs-2";
-
+import Chart from "chart.js";
+import ChartDataLabels from "chartjs-plugin-datalabels";
+Chart.plugins.register(ChartDataLabels);
 const TempChart = ({ data }) => {
   console.log(data);
   const lineChart =
@@ -8,7 +10,7 @@ const TempChart = ({ data }) => {
       //     dailyData[3] && !!dailyData[3].data.length ? (
       <Line
         width={3520}
-        height={120}
+        height={100}
         data={{
           labels: data.hourly
             .filter((item) => {
@@ -30,20 +32,21 @@ const TempChart = ({ data }) => {
               fill: false,
               lineTension: 0.1,
               backgroundColor: "rgba(75,192,192,0.4)",
-              borderColor: "rgba(75,192,192,1)",
+              borderColor: "#4b86c0",
               borderCapStyle: "butt",
               borderDash: [],
               borderDashOffset: 0.0,
               borderJoinStyle: "miter",
-              pointBorderColor: "rgba(75,192,192,1)",
+              borderWidth: 1,
+              pointBorderColor: "#4b86c0",
               pointBackgroundColor: "#fff",
               pointBorderWidth: 1,
-              pointHoverRadius: 5,
-              pointHoverBackgroundColor: "rgba(75,192,192,1)",
+              pointHoverRadius: 1,
+              pointHoverBackgroundColor: "#4b86c0",
               pointHoverBorderColor: "rgba(220,220,220,1)",
-              pointHoverBorderWidth: 2,
+              pointHoverBorderWidth: 1,
               pointRadius: 1,
-              pointHitRadius: 10,
+              pointHitRadius: 1,
               data: data.hourly
                 .filter((item) => {
                   let date = new Date();
@@ -92,6 +95,9 @@ const TempChart = ({ data }) => {
             display: false,
           },
           tooltips: {
+            enabled: false,
+            mode: "nearest",
+            intersect: false,
             callbacks: {
               label: function (tooltipItem) {
                 return tooltipItem.yLabel;
@@ -101,11 +107,8 @@ const TempChart = ({ data }) => {
           scales: {
             xAxes: [
               {
-                gridLines: { display: true, z: 1 },
+                gridLines: { display: true },
                 ticks: {
-                  //autoSkip: false,
-                  maxRotation: 300,
-                  minRotation: 30,
                   display: false,
                 },
                 offset: true,
@@ -114,7 +117,7 @@ const TempChart = ({ data }) => {
             ],
             yAxes: [
               {
-                gridLines: { borderDash: [15, 18], display: true, z: 1 },
+                gridLines: { borderDash: [15, 18], display: true },
                 ticks: {
                   suggestedMin: -5,
                   suggestedMax: 5,
@@ -122,6 +125,14 @@ const TempChart = ({ data }) => {
                 },
               },
             ],
+          },
+          plugins: {
+            datalabels: {
+              anchor: "end",
+              align: "top",
+              formatter: Math.round,
+              textShadowBlur: 0,
+            },
           },
         }}
       />

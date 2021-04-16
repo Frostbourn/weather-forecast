@@ -14,7 +14,7 @@ const Hours = ({ data }) => {
       .slice(0, 48)
       .map((item, index) => {
         return (
-          <span className="font-bold p-3">
+          <span className="font-bold p-3 border-solid border border-gray-50">
             {new Date(item.dateTime).toLocaleString("pl-PL", {
               hour: "2-digit",
               minute: "2-digit",

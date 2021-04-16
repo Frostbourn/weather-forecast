@@ -14,7 +14,11 @@ body {
 }
 
 .hourly-forecast .column {
-  width: 3936px;
+  width: 3947px;
+}
+
+.hourly-forecast canvas {
+  margin-left: -10px;
 }
 
 .hours,
