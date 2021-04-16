@@ -32,26 +32,66 @@ const CurrentWeather = ({ lat, lng, query }) => {
         .then((data) => {
           setData(data.forecasts);
 
-          data.forecasts.hourly.slice(0, 23).map((day, index) => {
-            let date = new Date().getHours();
-            let date2 = new Date(day.dateTime).getHours();
-            if (date === date2) {
-              const maxTemp = Math.round(day.temperature);
-              //const minTemp =  Math.round(day.temperature);
-              const rain = Math.round(day.rain * 10) / 10;
-              const wind = Math.round(day.windSpeed);
-              const windDirection = day.windDirection;
-              const pressure = Math.round(day.groundPressure);
-              const snow = Math.round(day.snow * 10) / 10;
-              setMaxTemp(maxTemp);
-              //setMinTemp(minTemp);
-              setRain(rain);
-              setSnow(snow);
-              setWind(wind);
-              setWindDirection(windDirection);
-              setPressure(pressure);
-            }
-          });
+          const currentWeather =
+            data.forecasts.hourly &&
+            !!data.forecasts.hourly.length &&
+            data.forecasts.hourly.slice(0, 23).filter((item) => {
+              let date = new Date().getHours();
+              let dateAPI = new Date(item.dateTime).getHours() - 2;
+              if (dateAPI === date) {
+                const maxTemp = Math.round(item.temperature);
+                //const minTemp =  Math.round(day.temperature);
+                const rain = Math.round(item.rain * 10) / 10;
+                const wind = item.windSpeed;
+                const windDirection = item.windDirection;
+                const pressure = Math.round(item.groundPressure);
+                const snow = Math.round(item.snow * 10) / 10;
+                setMaxTemp(maxTemp);
+                //setMinTemp(minTemp);
+                setRain(rain);
+                setSnow(snow);
+                setWind(wind);
+                setWindDirection(windDirection);
+                setPressure(pressure);
+              }
+            });
+          // .slice(2, 2)
+          // .map((item, index) => {
+          //   const maxTemp = Math.round(day.temperature);
+          //   //const minTemp =  Math.round(day.temperature);
+          //   const rain = Math.round(day.rain * 10) / 10;
+          //   const wind = day.windSpeed;
+          //   const windDirection = day.windDirection;
+          //   const pressure = Math.round(day.groundPressure);
+          //   const snow = Math.round(day.snow * 10) / 10;
+          //   setMaxTemp(maxTemp);
+          //   //setMinTemp(minTemp);
+          //   setRain(rain);
+          //   setSnow(snow);
+          //   setWind(wind);
+          //   setWindDirection(windDirection);
+          //   setPressure(pressure);
+          // });
+          // data.forecasts.hourly.slice(0, 23).map((day, index) => {
+          //   let date = new Date().getHours();
+          //   let date2 = new Date(day.dateTime).getHours();
+          //   if (date === date2) {
+          //     const maxTemp = Math.round(day.temperature);
+          //     //const minTemp =  Math.round(day.temperature);
+          //     const rain = Math.round(day.rain * 10) / 10;
+          //     const wind = day.windSpeed;
+          //     const windDirection = day.windDirection;
+          //     const pressure = Math.round(day.groundPressure);
+          //     const snow = Math.round(day.snow * 10) / 10;
+          //     setMaxTemp(maxTemp);
+          //     //setMinTemp(minTemp);
+          //     setRain(rain);
+          //     setSnow(snow);
+          //     setWind(wind);
+          //     setWindDirection(windDirection);
+          //     setPressure(pressure);
+          //   }
+          // });
           setTime(
             new Date().toLocaleString("pl-PL", {
               hour: "2-digit",
@@ -105,11 +145,11 @@ const CurrentWeather = ({ lat, lng, query }) => {
               <WiRaindrop size={24} color="#000" />
             )}
             {snow
-              ? (snow + rain).toFixed(1)
+              ? snow + rain
               : snow > 0
               ? "..."
               : rain
-              ? (rain + snow).toFixed(1)
+              ? rain + snow
               : rain > 0
               ? "..."
               : 0}{" "}

@@ -11,7 +11,7 @@ const Wind = ({ data }) => {
         let date2 = new Date(item.dateTime);
         return date2 >= date;
       })
-      .slice(0, 48)
+      .slice(2, 50)
       .map((item, index) => {
         return (
           <>
@@ -22,7 +22,7 @@ const Wind = ({ data }) => {
                 style={{ transform: `rotate(${item.windDirection}deg)` }}
               />
               <p className="flex justify-center py-4 items-center font-bold bg-gray-50">
-                {Math.round(item.windSpeed)}
+                {item.windSpeed}
                 <span className="text-xs">km/h</span>
               </p>
             </p>

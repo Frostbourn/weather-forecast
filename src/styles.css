@@ -14,7 +14,7 @@ body {
 }
 
 .hourly-forecast .column {
-  width: 4820px;
+  width: 3936px;
 }
 
 .hours,
@@ -28,14 +28,14 @@ body {
 
 .hourly-forecast .column .p-3 {
   display: flex;
-  min-width: 82px;
+  width: 82px;
   justify-content: center;
   align-items: center;
 }
 
 .hourly-forecast .column .rain {
   position: relative;
-  min-height: 82px;
+  height: 82px;
 }
 
 .hourly-forecast .column .rain .drops {

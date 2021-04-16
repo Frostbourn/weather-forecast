@@ -5,12 +5,11 @@ import Drops from "./ComponentData/Drops.js";
 import Wind from "./ComponentData/Wind.js";
 
 const HourlyForecast = ({ data }) => {
-  console.log(data);
   return (
     <div className="hourly-forecast">
       <div className="column pt-1.5 border-solid border border-gray-50">
         <Hours data={data} />
-        <TempChart />
+        <TempChart data={data} />
         <Drops data={data} />
         <Wind data={data} />
         {/* <p>

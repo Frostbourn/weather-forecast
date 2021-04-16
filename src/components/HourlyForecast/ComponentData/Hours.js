@@ -7,8 +7,9 @@ const Hours = ({ data }) => {
     data.hourly
       .filter((item) => {
         let date = new Date();
-        let date2 = new Date(item.dateTime);
-        return date2 >= date;
+        let dateAPI = new Date(item.dateTime);
+        const now = dateAPI >= date;
+        return now;
       })
       .slice(0, 48)
       .map((item, index) => {
