@@ -1,5 +1,5 @@
 import React from "react";
-import { WiDayCloudy } from "weather-icons-react";
+import { WiDayCloudy, WiNightAltPartlyCloudy } from "weather-icons-react";
 
 const Weathericon = ({ isDay }) => {
   //console.log(isDay);
@@ -9,7 +9,7 @@ const Weathericon = ({ isDay }) => {
   if (isDay) {
     return <WiDayCloudy size={iconSize} color={iconColor} />;
   } else {
-    return <h1>Noc</h1>;
+    return <WiNightAltPartlyCloudy size={iconSize} color={iconColor} />;
   }
 };
 

@@ -10,26 +10,32 @@ body {
 }
 
 .hourly-forecast {
-  display: flex;
   overflow-x: scroll;
 }
 
 .hourly-forecast .column {
+  width: 4820px;
+}
+
+.hours,
+.drops,
+.wind {
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
-  min-width: 100px;
-  padding: 10px 0;
+  float: left;
+}
+
+.hourly-forecast .column .p-3 {
+  display: flex;
+  min-width: 82px;
+  justify-content: center;
+  align-items: center;
 }
 
 .hourly-forecast .column .rain {
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  min-height: 65px;
-  width: 100%;
+  min-height: 82px;
 }
 
 .hourly-forecast .column .rain .drops {

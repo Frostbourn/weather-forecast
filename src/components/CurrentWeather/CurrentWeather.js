@@ -129,7 +129,6 @@ const CurrentWeather = ({ lat, lng, query }) => {
           </div>
         </div>
       </div>
-
       <HourlyForecast data={data} />
     </>
   );
