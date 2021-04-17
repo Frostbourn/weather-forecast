@@ -3,6 +3,7 @@ import Hours from "./ComponentData/Hours.js";
 import TempChart from "./ComponentData/TempChart.js";
 import Drops from "./ComponentData/Drops.js";
 import Wind from "./ComponentData/Wind.js";
+import Pressure from "./ComponentData/Pressure.js";
 
 const HourlyForecast = ({ data }) => {
   return (
@@ -12,6 +13,7 @@ const HourlyForecast = ({ data }) => {
         <TempChart data={data} />
         <Drops data={data} />
         <Wind data={data} />
+        <Pressure data={data} />
         {/* <p>
         <Hours data={data} />
       </p>  <p className="p-3">{Math.round(item.temperature)}º</p>

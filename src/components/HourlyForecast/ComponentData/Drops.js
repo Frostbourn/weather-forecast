@@ -17,19 +17,19 @@ const Drops = ({ data }) => {
             className="rain p-3 border-solid border border-gray-50"
             style={{
               paddingBottom: `${
-                Math.round((item.rain + item.snow) * 10) + 1
+                Math.round(((item.rain + item.snow) * 100) / 82) + 1
               }px`,
             }}
           >
             <span
               className="drops text-sm bg-blue-600"
               style={{
-                height: `${Math.round((item.rain + item.snow) * 10)}px`,
+                height: `${Math.round(((item.rain + item.snow) * 100) / 82)}px`,
               }}
             ></span>
             <span
               className="snow bg-blue-400"
-              style={{ height: `${Math.round(item.snow * 10)}px` }}
+              style={{ height: `${Math.round((item.snow * 100) / 82)}px` }}
             ></span>
             <span className="text-sm text-blue-600 font-bold">
               {item.rain + item.snow > 0 ? item.rain + item.snow : ""}
