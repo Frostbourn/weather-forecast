@@ -99,15 +99,13 @@ const TempChart = ({ data }) => {
             mode: "nearest",
             intersect: false,
             callbacks: {
-              label: function (tooltipItem) {
-                return tooltipItem.yLabel;
-              },
+              label: (item) => `${item.yLabel} °`,
             },
           },
           scales: {
             xAxes: [
               {
-                gridLines: { display: true },
+                gridLines: { display: false },
                 ticks: {
                   display: false,
                 },
