@@ -2,9 +2,20 @@ import React, { useState, useEffect } from "react";
 import { Line } from "react-chartjs-2";
 import Chart from "chart.js";
 import ChartDataLabels from "chartjs-plugin-datalabels";
+
 Chart.plugins.register(ChartDataLabels);
+
 const TempChart = ({ data }) => {
-  console.log(data);
+  const maxTemp =
+    data.hourly && !!data.hourly.length && data.hourly
+      ? Math.max(...data.hourly.map((item) => item.temperature), 0)
+      : "";
+
+  const minTemp =
+    data.hourly && !!data.hourly.length && data.hourly
+      ? Math.min(...data.hourly.map((item) => item.temperature), 0)
+      : "";
+
   const lineChart =
     data.hourly && !!data.hourly.length && data.hourly ? (
       //     dailyData[3] && !!dailyData[3].data.length ? (
@@ -117,8 +128,8 @@ const TempChart = ({ data }) => {
               {
                 gridLines: { borderDash: [15, 18], display: true },
                 ticks: {
-                  suggestedMin: -5,
-                  suggestedMax: 5,
+                  suggestedMin: minTemp - 3,
+                  suggestedMax: maxTemp + 3,
                   display: false,
                 },
               },

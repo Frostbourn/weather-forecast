@@ -6,7 +6,6 @@ import ChartDataLabels from "chartjs-plugin-datalabels";
 Chart.plugins.register(ChartDataLabels);
 
 const Pressure = ({ data }) => {
-  console.log(data);
   const lineChart =
     data.hourly && !!data.hourly.length && data.hourly ? (
       //     dailyData[3] && !!dailyData[3].data.length ? (
@@ -119,8 +118,8 @@ const Pressure = ({ data }) => {
               {
                 gridLines: { borderDash: [15, 18], display: false },
                 ticks: {
-                  suggestedMin: 900,
-                  suggestedMax: 1100,
+                  suggestedMin: 800,
+                  suggestedMax: 1200,
                   display: false,
                 },
               },
